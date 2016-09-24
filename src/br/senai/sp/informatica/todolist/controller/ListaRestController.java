@@ -45,7 +45,7 @@ public class ListaRestController {
 			lista.setItens(itens);
 			listaDao.inserir(lista);
 			
-			URI location = new URI("/todo/" + lista.getId());
+			URI location = new URI("/lista/" + lista.getId());
 			
 			return ResponseEntity.created(location).body(lista);
 		} catch (Exception e) {
@@ -63,5 +63,16 @@ public class ListaRestController {
 	public ResponseEntity<Void> excluir(@PathVariable("id") long idLista) {
 		listaDao.excluir(idLista);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value="/item/{idItem}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> excluirItem(@PathVariable long idItem) {
+		listaDao.excluir(idItem);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value="/lista/{idLista}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Lista> mostrar() {
+		return listaDao;
 	}
 }
