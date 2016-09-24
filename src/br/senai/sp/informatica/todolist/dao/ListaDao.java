@@ -26,4 +26,10 @@ public class ListaDao {
 		TypedQuery<Lista> query = manager.createQuery("SELECT l FROM Lista l", Lista.class);
 		return query.getResultList();
 	}
+	
+	@Transactional
+	public void excluir(Long idLista) {
+		Lista lista = manager.find(Lista.class, idLista);
+		manager.remove(lista);
+	}
 }
