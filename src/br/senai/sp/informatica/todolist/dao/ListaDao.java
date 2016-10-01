@@ -34,6 +34,11 @@ public class ListaDao {
 		manager.remove(lista);
 	}
 	
+	public Lista buscar(Long idLista) {
+		Lista lista = manager.find(Lista.class, idLista);
+		return lista;
+	}
+	
 	@Transactional
 	public void excluirItem(Long idItem) {
 		ItemLista item = manager.find(ItemLista.class, idItem);
