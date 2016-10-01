@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.br.CNPJ;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
