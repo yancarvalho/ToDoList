@@ -6,14 +6,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties("senha")
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column(length=15, nullable=false, unique=true)
+	@Column(length=40, nullable=false, unique=true)
 	private String login;
-	@Column(length=15, nullable=false)
+	@Column(nullable=false)
 	private String senha;
 	
 	public Long getId() {
